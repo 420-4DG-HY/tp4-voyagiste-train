@@ -5,6 +5,8 @@ using ExcursionDTO;
 using FlightDTO;
 using HotelDTO;
 using TrainDTO;
+using static FlightDTO.DataModel;
+using static HotelDTO.DataModel;
 
 namespace PackageDTO
 {

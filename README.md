@@ -3,8 +3,9 @@
 
 ## Équipe
 
-Sujet : Train
-Noms : Simon Dénommé, Kevin Gauvin, Raphael Seyer, Olivier Mathieu
+Sujet : [inscrivez quel service est développé par l'équipe]
+Noms :
+[Remplacez ce texte par vos noms ici]
 
 ## Description
 
