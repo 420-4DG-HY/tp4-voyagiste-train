@@ -92,7 +92,6 @@ namespace CarDAL
             new Car(new Guid("54cf1439-a515-413e-a839-ae16717433d9"),carRentalCompanies[0],carModels[1], carSpecifications[1],"BFF-01"),
             new Car(new Guid("bea09eb2-dca6-4ad2-be61-28f341b5d424"),carRentalCompanies[1],carModels[2], carSpecifications[2],"ABX-01")
         };
-
         #endregion
 
         #region données dynamiques : Celles vont changer avec les réservations
