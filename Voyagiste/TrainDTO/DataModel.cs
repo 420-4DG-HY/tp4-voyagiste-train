@@ -5,7 +5,7 @@ namespace TrainDTO
     public record Seat(Guid SeatId, string Name, SeatType SeatType); // Siège assigné, incluant le numéro de wagon
     public record SeatType(Guid SeatTypeId, string Name, string Description); // Allée, fenêtre, sortie de secours,...
     public record TrainOperator(Guid TrainOperatorId, string Name); // ViaRail, Amtrak, ...
-    public record TrainLine(Guid TrainLineId, string Name, TrainOperator Operator, TrainStation[] Stations);// Une station peut être partagée entre plusieurs ligne (connexions)
+    public record TrainLine(Guid TrainLineId, string Name, TrainOperator Operator, TrainStation[] Stations); // Une station peut être partagée entre plusieurs ligne (connexions)
     public record TrainStation(Guid TrainStationId, string Name, Address Address); 
 
     // Permet de construire l'horaire des trains pour une journée/trajet donné

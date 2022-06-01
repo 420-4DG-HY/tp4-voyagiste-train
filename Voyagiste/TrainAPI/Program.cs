@@ -1,6 +1,8 @@
 //global using TrainDAL;
 //global using TrainBLL;
 
+using TrainBLL;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -12,7 +14,7 @@ builder.Services.AddSwaggerGen();
 
 //TODO : Créer les interfaces du DAL et du BLL
 //builder.Services.AddSingleton<ITrainDataAccess, TrainDataAccess>();
-//builder.Services.AddSingleton<ITrainBusinessLogic, TrainBusinessLogic>();
+builder.Services.AddSingleton<ITrainBusinessLogic, TrainBusinessLogic>();
 
 var app = builder.Build();
 

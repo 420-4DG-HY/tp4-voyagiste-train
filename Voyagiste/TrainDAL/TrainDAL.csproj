@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CommonDataDTO\CommonDataDTO.csproj" />
     <ProjectReference Include="..\TrainDTO\TrainDTO.csproj" />
   </ItemGroup>
 

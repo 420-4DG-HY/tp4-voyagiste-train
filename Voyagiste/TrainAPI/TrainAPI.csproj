@@ -16,8 +16,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\TrainBLL\TrainBLL.csproj" />
     <ProjectReference Include="..\CommonDataDTO\CommonDataDTO.csproj" />
-    <ProjectReference Include="..\TrainDAL\TrainDAL.csproj" />
     <ProjectReference Include="..\TrainDTO\TrainDTO.csproj" />
   </ItemGroup>
 
