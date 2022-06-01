@@ -3,9 +3,9 @@
 
 ## Équipe
 
-Sujet : [inscrivez quel service est développé par l'équipe]
+Sujet : Train
 Noms :
-[Remplacez ce texte par vos noms ici]
+Raphaël Seyer, Kevin Gauvin, Olivier Mathieu, Simmon Dénommé
 
 ## Description
 
