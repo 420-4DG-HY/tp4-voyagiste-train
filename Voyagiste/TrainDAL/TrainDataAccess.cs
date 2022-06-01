@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TrainDAL
 {
-    internal class PackageDataAccess
+    internal class TrainDataAccess
     {
     }
 }
