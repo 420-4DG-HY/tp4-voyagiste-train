@@ -5,7 +5,7 @@
 
 Sujet : Train
 Noms :
-Raphaël Seyer, Kevin Gauvin, Olivier Mathieu, Simmon Dénommé
+Raphaël Seyer, Kevin Gauvin, Olivier Mathieu, Simon Dénommé
 
 ## Description
 
