@@ -51,19 +51,19 @@ namespace TrainDAL
         
         public TrainBooking Book(Guid availabilityGuid, Person rentedTo, DateTime now)
         {
-            //TODO : Implémenter _dal Book
+            //TODO __________ Implémenter _dal Book
             throw new NotImplementedException();
         }
 
         public Seat[] GetAvailableSeats()
         {
-            //TODO : Implémenter _dal GetAvailableSeat
+            //TODO __________ Implémenter _dal GetAvailableSeat
             throw new NotImplementedException();
         }
 
         public TrainAvailability[] GetSeatAvailabilities(Guid seatId)
         {
-            //TODO : Implémenter _dal GetSeatAvailabilities
+            //TODO __________ Implémenter _dal GetSeatAvailabilities
             throw new NotImplementedException();
         }
     }
