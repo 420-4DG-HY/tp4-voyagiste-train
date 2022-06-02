@@ -7,61 +7,55 @@ namespace TrainBLL
 {
     public interface ITrainBusinessLogic
     {
-        public Seat[] GetAvailableSeat();
-        public TrainAvailability[] GetCarAvailabilities(Seat seat, TrainSchedule trainSchedule);
-        public TrainBooking? GetTrainBooking(Guid TrainBookingId);
+        // Static Data (get only)
+        public Seat[] GetAvailableSeats();  //*
         public SeatType? GetSeatType(Guid SeatTypeId);
         public Seat? GetSeat(Guid SeatId);
-        public TrainBooking Book(Guid CarId, DateTime From, DateTime To, Person rentedTo);
 
-        public BookingConfirmation ConfirmBooking(TrainBooking carBooking);
-        public BookingConfirmation? GetBookingConfirmation(TrainBooking carBooking);
-
-        public BookingCancellation CancelBooking(TrainBooking carBooking);
-        public BookingCancellation? GetBookingCancellation(TrainBooking carBooking);
+        // Dynamic Data (get and set)
+        public TrainAvailability[] GetSeatAvailabilities(Guid seatId); //*
+        public TrainBooking? GetTrainBooking(Guid TrainBookingId);
+        public TrainBooking Book(Guid availabilityGuid, Person rentedTo, DateTime now); //*
     }
-    
-    //public class TrainBusinessLogic : ITrainBusinessLogic
-    //{
-    //    readonly ILogger<TrainBusinessLogic> _logger;
-    //    //readonly ITrainDataAccess _dal;
 
-    //    //public TrainBusinessLogic(ITrainDataAccess DataAccess, ILogger<TrainBusinessLogic> Logger)
-    //    //{
-    //    //    _dal = DataAccess;
-    //    //    _logger = Logger;
-    //    //}
+    public class TrainBusinessLogic : ITrainBusinessLogic
+    {
+        readonly ITrainDataAccess _dal;
 
-    //    public TrainBooking Book(Guid CarId, DateTime From, DateTime To, Person rentedTo)
-    //    {
-    //        //Seat? car = _dal.GetCar(CarId);
-    //        //if (car == null)
-    //        //{
-    //        //    string message = "Invalid Car GUID : " + CarId;
-    //        //    _logger.LogError(message);
-    //        //    throw new Exception(message);
-    //        //}
-    //        //return _dal.Book(car, From, To, rentedTo);
-    //    }
+        public TrainBusinessLogic(ITrainDataAccess DataAccess)
+        {
+            _dal = DataAccess;
+        }
 
-    //    public BookingCancellation CancelBooking(TrainBooking cb)
-    //    {
-    //        // Libère la plage horaire de cette réservation
-    //        _dal.AddCarAvailability(cb.Car, cb.From, cb.To);
-    //        CleanupAvailabilities(cb.Car);
+        #region Méthodes inutiles
+        public SeatType? GetSeatType(Guid SeatTypeId)
+        {
+            throw new NotImplementedException();
+        }
+        public TrainBooking? GetTrainBooking(Guid TrainBookingId)
+        {
+            throw new NotImplementedException();
+        }
+        public Seat? GetSeat(Guid SeatId)
+        {
+            throw new NotImplementedException();
+        }
+        #endregion
 
-    //        return _dal.CancelBooking(cb);
-    //    }
+        public TrainBooking Book(Guid availabilityGuid, Person rentedTo, DateTime now)
+        {
+            return _dal.Book(availabilityGuid, rentedTo, now);
+        }
 
-    //    void CleanupAvailabilities(Seat seat)
-    //    {
-    //        // ici on devrait éventuellement fusionner les disponibilités adjacentes
-    //        // Une forme de défragmentation du calendrier après une annulation ou un retour prématuré de véhicule...
+        public Seat[] GetAvailableSeats()
+        {
+            return _dal.GetAvailableSeats();
+        }
 
-    //        TrainAvailability[]? availabilities = _dal.GetCarAvailabilities(seat);
+        public TrainAvailability[] GetSeatAvailabilities(Guid seatId)
+        {
+            return _dal.GetSeatAvailabilities(seatId);
+        }
 
-    //        // On identifie les disponibilités adjacentes 
-    //        // On les supprime et crée une nouvelle disponibilité qui les remplace
-    //    }
-    //}
+    }
 }

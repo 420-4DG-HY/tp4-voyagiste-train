@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using CommonDataDTO;
+using Microsoft.AspNetCore.Mvc;
+using TrainBLL;
+using TrainDAL;
 using TrainDTO;
 
 namespace TrainAPI.Controllers
@@ -7,27 +10,39 @@ namespace TrainAPI.Controllers
     [Route("[controller]")]
     public class TrainController : Controller
     {
-        readonly ILogger<TrainController> _logger;
-        //readonly ITrainBusinessLogic _bll;
+        readonly ITrainBusinessLogic _bll;
 
-        public TrainController(/*ITrainBusinessLogic BusinessLogic,*/ ILogger<TrainController> Logger)
+        public TrainController(ITrainBusinessLogic BusinessLogic)
         {
-            //_bll = BusinessLogic;
-            _logger = Logger;
+            _bll = BusinessLogic;
         }
 
         [HttpGet("GetAvailableSeats")]
-        public TrainLine[] GetAvailableTrainLines()
+        public Seat[] GetAvailableSeats()
         {
-            
+            return _bll.GetAvailableSeats();
         }
 
         [HttpGet("TrainAvailabilities/{TrainLineGuid}")]
-        public TrainAvailability[] GetTrainAvailabilities(Guid TrainLineGuid)
+        public TrainAvailability[] GetSeatAvailabilities(Guid SeatGuid)
         {
-            
+            if (SeatGuid != null)
+            {
+                TrainAvailability[] cm = _bll.GetSeatAvailabilities(SeatGuid);
+                if (cm != null)
+                {
+                    return cm;
+                }
+            }
+
+            // Aucun résultat
+            return new List<TrainAvailability>().ToArray();
         }
 
-
+        [HttpPost("Book")]
+        public TrainBooking Book(Guid AvailabilityGuid, Person rentedTo)
+        {
+            return _bll.Book(AvailabilityGuid, rentedTo, DateTime.Now);
+        }
     }
 }
