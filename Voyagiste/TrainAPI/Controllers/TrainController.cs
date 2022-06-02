@@ -1,7 +1,6 @@
 ﻿using CommonDataDTO;
 using Microsoft.AspNetCore.Mvc;
 using TrainBLL;
-using TrainDAL;
 using TrainDTO;
 
 namespace TrainAPI.Controllers
@@ -26,17 +25,7 @@ namespace TrainAPI.Controllers
         [HttpGet("TrainAvailabilities/{TrainLineGuid}")]
         public TrainAvailability[] GetSeatAvailabilities(Guid SeatGuid)
         {
-            if (SeatGuid != null)
-            {
-                TrainAvailability[] cm = _bll.GetSeatAvailabilities(SeatGuid);
-                if (cm != null)
-                {
-                    return cm;
-                }
-            }
-
-            // Aucun résultat
-            return new List<TrainAvailability>().ToArray();
+            return _bll.GetSeatAvailabilities(SeatGuid);
         }
 
         [HttpPost("Book")]

@@ -1,5 +1,7 @@
-﻿using CommonDataDTO;
-using TrainDTO;
+﻿using TrainDTO;
+using CommonDataDTO;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 
 namespace TrainDAL
 {
@@ -23,6 +25,15 @@ namespace TrainDAL
     
     public class TrainDataAccess : ITrainDataAccess
     {
+        private IConfiguration _configuration;
+        private ILogger _logger;
+
+        public TrainDataAccess(IConfiguration configuration, ILogger<TrainDataAccess> logger)
+        {
+            _configuration = configuration; // Permet éventuellement de recevoir ici la connexion string pour la base de données
+            _logger = logger;
+        }
+        
         #region Méthodes inutiles
         public Seat? GetSeat(Guid SeatId)
         {
@@ -57,8 +68,12 @@ namespace TrainDAL
 
         public Seat[] GetAvailableSeats()
         {
-            //TODO __________ Implémenter _dal GetAvailableSeat
-            throw new NotImplementedException();
+            var context = FakeData.GetInstance();
+            Seat[] s = context.trainAvailabilities.Select(x => x.Seat).ToArray();
+
+            return s;
+            
+            //return FakeData.GetInstance().trainAvailabilities.Select(x => x.Seat).ToArray();
         }
 
         public TrainAvailability[] GetSeatAvailabilities(Guid seatId)
