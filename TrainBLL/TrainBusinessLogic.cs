@@ -16,6 +16,11 @@ namespace TrainBLL
         public TrainAvailability[] GetSeatAvailabilities(Seat seat); //*
         public TrainBooking? GetTrainBooking(Guid TrainBookingId);
         public TrainBooking Book(Guid TrainAvailabilityId, Person Passenger);
+
+
+
+
+
     }
 
     public class TrainBusinessLogic : ITrainBusinessLogic
@@ -66,6 +71,7 @@ namespace TrainBLL
         {
             return _dal.GetSeatAvailabilities(seat);
         }
+
 
     }
 }

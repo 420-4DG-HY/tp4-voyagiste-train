@@ -120,7 +120,7 @@ namespace TrainDAL
             return FakeData.GetInstance().bookingConfirmations.Where(bc => bc.Booking == booking).FirstOrDefault();
         }
 
-        public TrainAvailability? GetTrainAvailability(Guid trainavailabilityId)
+        public TrainAvailability? GetTrainAvailability( Guid trainavailabilityId)
         {
             return FakeData.GetInstance().trainAvailabilities.Where(t => t.TrainAvailabilityId == trainavailabilityId).FirstOrDefault();
         }

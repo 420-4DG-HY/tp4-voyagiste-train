@@ -28,6 +28,13 @@ namespace TrainAPI.Controllers
             return _bll.GetSeatAvailabilities(seat);
         }
 
+        [HttpGet("Seat/{SeatId}")]
+        public Seat GetSeat(Guid seatid)
+        {
+            return _bll.GetSeat(seatid);
+        }
+
+
         [HttpPost("Book")]
         public TrainBooking Book(Guid TrainAvailabilityId, Person Passenger)
         {
