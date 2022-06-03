@@ -23,15 +23,15 @@ namespace TrainAPI.Controllers
         }
 
         [HttpGet("TrainAvailabilities/{TrainLineGuid}")]
-        public TrainAvailability[] GetSeatAvailabilities(Guid SeatGuid)
+        public TrainAvailability[] GetSeatAvailabilities(Seat seat)
         {
-            return _bll.GetSeatAvailabilities(SeatGuid);
+            return _bll.GetSeatAvailabilities(seat);
         }
 
         [HttpPost("Book")]
-        public TrainBooking Book(Guid AvailabilityGuid, Person rentedTo)
+        public TrainBooking Book(Guid TrainAvailabilityId, Person Passenger)
         {
-            return _bll.Book(AvailabilityGuid, rentedTo, DateTime.Now);
+            return _bll.Book(TrainAvailabilityId, Passenger);
         }
     }
 }

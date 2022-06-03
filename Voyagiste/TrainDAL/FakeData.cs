@@ -1,5 +1,5 @@
-﻿using CommonDataDTO;
-using TrainDTO;
+﻿using TrainDTO;
+using CommonDataDTO;
 
 namespace TrainDAL
 {
@@ -109,6 +109,8 @@ namespace TrainDAL
         #region Données dynamiques               
         internal List<TrainAvailability> trainAvailabilities;
         internal List<TrainBooking> trainBookings;
+        internal List<BookingConfirmation> bookingConfirmations;
+        internal List<BookingCancellation> bookingCancellations;
         #endregion
 
         public FakeData()
@@ -120,11 +122,14 @@ namespace TrainDAL
             trainAvailabilities.Add(new TrainAvailability(new Guid("2b11a5d9-5c88-4ea6-b097-cff7e4c5987c"), trainSchedules[6], seats[3]));
 
             trainBookings = new List<TrainBooking>();
+            bookingConfirmations = new List<BookingConfirmation>();
+            bookingCancellations = new List<BookingCancellation>();
         }
 
         internal static FakeData GetInstance()
         {
-            if (Singleton == null) Singleton = new FakeData();
+            if (Singleton is null) 
+                Singleton = new FakeData();
             return Singleton;
         }
     }
