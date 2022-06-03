@@ -27,8 +27,8 @@ namespace TrainDAL
           new Seat(new Guid("ad83a50d-66f6-4a53-b6d3-05aca37c9d23"), "9", seatTypes[2]),
           new Seat(new Guid("1579ccdc-97a2-45ce-855d-53e738430384"), "14", seatTypes[3]),
           new Seat(new Guid("50580569-7d4f-436c-9e87-8579141a7913"), "18", seatTypes[4]),
-          new Seat(new Guid("ad83a50d-66f6-4a53-b6d3-05aca37c9d23"), "24", seatTypes[5]),
-          new Seat(new Guid("b8f8f8e9-f8c9-4f0b-b8e8-f8f8f8f8f8f8"), "30", seatTypes[6]),
+          new Seat(new Guid("ad83a50d-66f6-4a53-b6d3-05aca37c9d23"), "24", seatTypes[0]),
+          new Seat(new Guid("b8f8f8e9-f8c9-4f0b-b8e8-f8f8f8f8f8f8"), "30", seatTypes[1]),
         };
 
         internal static readonly TrainOperator[] trainOperators =
