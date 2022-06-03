@@ -46,7 +46,7 @@ namespace TrainBLL
         }
         public Seat? GetSeat(Guid SeatId)
         {
-            throw new NotImplementedException();
+            return _dal.GetSeat(SeatId);
         }
         #endregion
 
