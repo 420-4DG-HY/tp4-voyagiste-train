@@ -22,7 +22,7 @@ namespace TrainAPI.Controllers
             return _bll.GetAvailableSeats();
         }
 
-        [HttpGet("TrainAvailabilities/{TrainLineGuid}")]
+        [HttpGet("TrainAvailabilities/{SeatId}")]
         public TrainAvailability[] GetSeatAvailabilities(Seat seat)
         {
             return _bll.GetSeatAvailabilities(seat);
