@@ -45,7 +45,7 @@ namespace TrainDAL
         #region Méthodes inutiles
         public Seat? GetSeat(Guid SeatId)
         {
-            return FakeData.seats.Where(cb => cb.SeatId == SeatId).FirstOrDefault();
+            return FakeData.GetInstance().Seats.Where(cb => cb.SeatId == SeatId).FirstOrDefault();
         }
         public SeatType? GetSeatType(Guid SeatTypeId)
         {

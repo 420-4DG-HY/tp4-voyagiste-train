@@ -111,6 +111,7 @@ namespace TrainDAL
         internal List<TrainBooking> trainBookings;
         internal List<BookingConfirmation> bookingConfirmations;
         internal List<BookingCancellation> bookingCancellations;
+        internal List<Seat> Seats;
         #endregion
 
         public FakeData()
