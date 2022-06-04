@@ -8,19 +8,18 @@ namespace TrainBLL
     public interface ITrainBusinessLogic
     {
         // Static Data (get only)
-        public Seat[] GetAvailableSeats();  //*
+        //public Seat[] GetAvailableSeats();  //*
         public SeatType? GetSeatType(Guid SeatTypeId);
-        public Seat? GetSeat(Guid SeatId);
+        public SeatType[] GetSeatType();
+
+        public Seat? GetSeat(Guid seatid);
 
         // Dynamic Data (get and set)
-        public TrainAvailability[] GetSeatAvailabilities(Seat seat); //*
-        public TrainBooking? GetTrainBooking(Guid TrainBookingId);
+        //public TrainAvailability[] GetSeatAvailabilities(Seat seat); //*
+        public TrainAvailability[] GetSeatTypeAvailabilities(SeatType seatType); //*
+
+        //public TrainBooking? GetTrainBooking(Guid TrainBookingId);
         public TrainBooking Book(Guid TrainAvailabilityId, Person Passenger);
-
-
-
-
-
     }
 
     public class TrainBusinessLogic : ITrainBusinessLogic
@@ -32,23 +31,16 @@ namespace TrainBLL
         {
             _dal = DataAccess;
             _logger = Logger;
-
         }
 
-        #region Méthodes inutiles
         public SeatType? GetSeatType(Guid SeatTypeId)
         {
-            throw new NotImplementedException();
+            return _dal.GetSeatType(SeatTypeId);
         }
-        public TrainBooking? GetTrainBooking(Guid TrainBookingId)
+        public Seat? GetSeat(Guid seatid)
         {
-            throw new NotImplementedException();
+            return _dal.GetSeat(seatid);
         }
-        public Seat? GetSeat(Guid SeatId)
-        {
-            return _dal.GetSeat(SeatId);
-        }
-        #endregion
 
         public TrainBooking Book(Guid TrainAvailabilityId, Person Passenger)
         {
@@ -62,16 +54,32 @@ namespace TrainBLL
             return _dal.Book(Passenger, TrainAvailability);
         }
 
-        public Seat[] GetAvailableSeats()
+        public TrainAvailability[] GetSeatTypeAvailabilities(SeatType seatType)
         {
-            return _dal.GetAvailableSeats();
+            return _dal.GetSeatTypeAvailabilities(seatType);
         }
 
-        public TrainAvailability[] GetSeatAvailabilities(Seat seat)
+        public SeatType[] GetSeatType()
         {
-            return _dal.GetSeatAvailabilities(seat);
+           return _dal.GetSeatType();
         }
 
+        #region Méthodes inutiles
+        //public TrainBooking? GetTrainBooking(Guid TrainBookingId)
+        //{
+        //    throw new NotImplementedException();
+        //}
 
+        //public Seat[] GetAvailableSeats()
+        //{
+        //    return _dal.GetAvailableSeats();
+        //}
+
+        //public TrainAvailability[] GetSeatAvailabilities(Seat seat)
+        //{
+        //    return _dal.GetSeatAvailabilities(seat);
+        //}
+
+        #endregion
     }
 }

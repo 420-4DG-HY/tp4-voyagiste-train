@@ -17,21 +17,30 @@ namespace TrainAPI.Controllers
         }
 
         [HttpGet("GetAvailableSeats")]
-        public Seat[] GetAvailableSeats()
+        public SeatType[] GetAvailableSeats()
         {
-            return _bll.GetAvailableSeats();
+            return _bll.GetSeatType();
         }
 
-        [HttpGet("TrainAvailabilities/{SeatId}")]
-        public TrainAvailability[] GetSeatAvailabilities(Seat seat)
+        [HttpGet("TrainAvailabilities/{SeatTypeId}")]
+        public TrainAvailability[] GetSeatAvailabilities(Guid SeatTypeId)
         {
-            return _bll.GetSeatAvailabilities(seat);
+            if(SeatTypeId != null)
+            {
+                SeatType? s = _bll.GetSeatType(SeatTypeId);
+                if(s != null)
+                {
+                    return _bll.GetSeatTypeAvailabilities(s);
+                }
+            }
+            return new List<TrainAvailability>().ToArray();
+
         }
 
         [HttpGet("Seat/{SeatId}")]
-        public Seat GetSeat(Guid seatid)
+        public Seat? GetSeat(Guid SeatId)
         {
-            return _bll.GetSeat(seatid);
+            return _bll.GetSeat(SeatId);
         }
 
 
